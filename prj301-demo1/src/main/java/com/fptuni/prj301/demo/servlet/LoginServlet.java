@@ -28,21 +28,23 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String status = "Failed!";
+        if (username.equals("admin") && password.equals("admin")) {
+            status = "Success!";
+        }
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-           
-            
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>PROJ301 Demo - Login result</title>");            
+            out.println("<title>Servlet Login</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            
-                        
+            out.println("<h1>"+ status +"</h1>");
             out.println("</body>");
             out.println("</html>");
         }
